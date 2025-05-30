@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Management</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0078d4;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    .view-products {
+      text-align: center;
+    }
+
+    .view-products a {
+      text-decoration: none;
+      color: white;
+      background: #28a745;
+      padding: 10px 20px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .view-products a:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Product Management</h2>
+
+    <!-- Add Category Form -->
+    <form action="{% url 'add_category' %}" method="post">
+      {% csrf_token %}
+      <label for="category">Add Category</label>
+      <input type="text" id="category" name="category_name" placeholder="Enter category name" required>
+      <button type="submit">Add Category</button>
+    </form>
+
+    <!-- Add Subcategory Form -->
+    <form action="{% url 'add_subcategory' %}" method="post">
+      {% csrf_token %}
+      <label for="subcategory">Add Subcategory</label>
+      <input type="text" id="subcategory" name="subcategory_name" placeholder="Enter subcategory name" required>
+      <button type="submit">Add Subcategory</button>
+    </form>
+
+    <!-- View Products Button -->
+    <div class="view-products">
+      <a href="{% url 'view_products' %}">View Products</a>
+    </div>
+  </div>
+</body>
+</html>
